@@ -13,10 +13,10 @@
   <label for="{$prefix}responsibilities">Responsibilities:</label>
   <textarea id="{$prefix}responsibilities" rows="10" cols="50" name="{$prefix}responsibilities"></textarea>
   <label for="{$prefix}from_Month">From:</label>
-  {html_select_date display_days=FALSE prefix='{$prefix}from_' reverse_years=TRUE start_year=-20}
+  {html_select_date display_days=FALSE prefix="`$prefix`from_" reverse_years=TRUE start_year=-20}
   <label for="{$prefix}to_Month">To:</label>
-  {html_select_date display_days=FALSE prefix='{$prefix}to_' reverse_years=TRUE start_year=-20}
+  {html_select_date display_days=FALSE prefix="`$prefix`to_" reverse_years=TRUE start_year=-20}
   <label for="{$prefix}leaving">Reason for leaving:</label>
   <input id="{$prefix}leaving" type="text" name="{$prefix}leaving">
-  {include file='yesno.tpl' name='{$prefix}contact_employer' prompt='May we contact this employer for a reference?'}
+  {include file='yesno.tpl' name="`$prefix`contact_employer" prompt='May we contact this employer for a reference?'}
 </fieldset>
