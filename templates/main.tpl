@@ -31,59 +31,67 @@
             <input id="middle_initial" class="input-mini" placeholder="MI" type="text" name="middle_initial">
           </fieldset>
         </div>
-        <fieldset class="span6">
-          <legend>Contact Information</legend>
-          {include file='address.tpl' prefix='contact_' address_to_label='Address'}
-          <div class="form-horizontal">
-            <div class="control-group">
-              <label class="control-label" for="driver_license">Driver License Number</label>
-              <div class="controls">
-                <input id="driver_license" class="input-small" type="text" name="driver_license">
+        <div class="row">
+          <fieldset class="span6">
+            <legend>Contact Information</legend>
+            {include file='address.tpl' prefix='contact_' address_to_label='Address'}
+            <div class="form-horizontal">
+              <div class="control-group">
+                <label class="control-label" for="driver_license">Driver License Number</label>
+                <div class="controls">
+                  <input id="driver_license" class="input-small" type="text" name="driver_license">
+                </div>
               </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label" for="phone_number">Phone Number</label>
-              <div class="controls">
-                <input id="phone_number" class="input-medium" type="text" name="phone_number">
-              </div>
-            </div>
-          </div>
-        </fieldset>
-        <fieldset class="span6">
-          <legend>Applicant Information</legend>
-          <div class="form-horizontal">
-            <div class="control-group">
-              <label class="control-label" for="date_available">Date Available</label>
-              <div class="controls">
-                <input id="date_available" class="datepicker input-small" type="text" name="date_available">
-              </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label" for="desired_salary">Desired Salary</label>
-              <div class="controls">
-                <div class="input-prepend">
-                  <span class="add-on">$</span>
-                  <input id="desired_salary" class="input-mini" type="text" name="desired_salary">
+              <div class="control-group">
+                <label class="control-label" for="phone_number">Phone Number</label>
+                <div class="controls">
+                  <input id="phone_number" class="input-medium" type="text" name="phone_number">
                 </div>
               </div>
             </div>
-          </div>
-          <fieldset>
+          </fieldset>
+          <fieldset class="span6">
+            <legend>Applicant Information</legend>
+            <div class="form-horizontal">
+              <div class="control-group">
+                <label class="control-label" for="date_available">Date Available</label>
+                <div class="controls">
+                  <input id="date_available" class="datepicker input-small" type="text" name="date_available">
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="desired_salary">Desired Salary</label>
+                <div class="controls">
+                  <div class="input-prepend">
+                    <span class="add-on">$</span>
+                    <input id="desired_salary" class="input-mini" type="text" name="desired_salary">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="span6">
             <legend>Position Desired</legend>
-            <label><input type="checkbox" name="position_desired" value="busser">Busser</label>
-            <label><input type="checkbox" name="position_desired" value="server">Server</label>
-            <label><input type="checkbox" name="position_desired" value="lead server">Lead Server</label>
-            <label><input type="checkbox" name="position_desired" value="cook">Cook</label>
-            <label><input type="checkbox" name="position_desired" value="sous chef">Sous Chef</label>
-            <label><input type="checkbox" name="position_desired" value="Dishwasher">Dishwasher</label>
-        </fieldset>
-        {include file='yesno.tpl' prompt='Are you a citizen of the United States?' name='citizen' }
-        {include file='yesno.tpl' prompt='If no, are you authorized to work in the United States?' name='authorized' }
-        {include file='yesno.tpl' prompt='Have you ever worked for this company?' name='prior_employment' }
-        {include file='yesno.tpl' prompt='Have you ever been convicted of a felony?' name='felony' }
-        <div>
-          If yes, please explain:
-          <textarea rows="10" cols="50" name="felony_explain"></textarea>
+            <label class="checkbox"><input type="checkbox" name="position_desired" value="busser">Busser</label>
+            <label class="checkbox"><input type="checkbox" name="position_desired" value="server">Server</label>
+            <label class="checkbox"><input type="checkbox" name="position_desired" value="lead server">Lead Server</label>
+            <label class="checkbox"><input type="checkbox" name="position_desired" value="cook">Cook</label>
+            <label class="checkbox"><input type="checkbox" name="position_desired" value="sous chef">Sous Chef</label>
+            <label class="checkbox"><input type="checkbox" name="position_desired" value="Dishwasher">Dishwasher</label>
+          </fieldset>
+        </div>
+        <div class="row">
+          <fieldset class="span12">
+            <legend>Status</legend>
+            {include file='yesno.tpl' prompt='Are you a citizen of the United States?' name='citizen' }
+            {include file='yesno.tpl' prompt='If no, are you authorized to work in the United States?' name='authorized' }
+            {include file='yesno.tpl' prompt='Have you ever worked for this company?' name='prior_employment' }
+            {include file='yesno.tpl' prompt='Have you ever been convicted of a felony?' name='felony' }
+            <div>
+              If yes, please explain:
+              <textarea rows="4" name="felony_explain"></textarea>
+            </div>
+          </fieldset>
         </div>
         <fieldset>
           <legend>Education</legend>
