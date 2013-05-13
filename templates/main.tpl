@@ -48,6 +48,12 @@
                   <input id="phone_number" class="input-medium" type="text" name="phone_number">
                 </div>
               </div>
+              <div class="control-group">
+                <label class="control-label" for="email">Email</label>
+                <div class="controls">
+                  <input id="email" class="input-large" type="text" name="email">
+                </div>
+              </div>
             </div>
           </fieldset>
           <fieldset class="span6">
@@ -74,10 +80,10 @@
             <legend>Position Desired</legend>
             <label class="checkbox"><input type="checkbox" name="position_desired" value="busser">Busser</label>
             <label class="checkbox"><input type="checkbox" name="position_desired" value="server">Server</label>
-            <label class="checkbox"><input type="checkbox" name="position_desired" value="lead server">Lead Server</label>
+            <label class="checkbox"><input type="checkbox" name="position_desired" value="lead_server">Lead Server</label>
             <label class="checkbox"><input type="checkbox" name="position_desired" value="cook">Cook</label>
-            <label class="checkbox"><input type="checkbox" name="position_desired" value="sous chef">Sous Chef</label>
-            <label class="checkbox"><input type="checkbox" name="position_desired" value="Dishwasher">Dishwasher</label>
+            <label class="checkbox"><input type="checkbox" name="position_desired" value="sous_chef">Sous Chef</label>
+            <label class="checkbox"><input type="checkbox" name="position_desired" value="dishwasher">Dishwasher</label>
           </fieldset>
         </div>
         <div class="row">
