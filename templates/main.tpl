@@ -83,22 +83,23 @@
         <div class="row">
           <fieldset class="span12">
             <legend>Status</legend>
-            {include file='yesno.tpl' prompt='Are you a citizen of the United States?' name='citizen' }
-            {include file='yesno.tpl' prompt='If no, are you authorized to work in the United States?' name='authorized' }
-            {include file='yesno.tpl' prompt='Have you ever worked for this company?' name='prior_employment' }
-            {include file='yesno.tpl' prompt='Have you ever been convicted of a felony?' name='felony' }
-            <div>
-              If yes, please explain:
-              <textarea rows="4" name="felony_explain"></textarea>
-            </div>
+            {include file='yesno.tpl' prompt_class='span6' radio_class='span2' prompt='Are you a citizen of the United States?' name='citizen' }
+            {include file='yesno.tpl' prompt_class='span6' radio_class='span2' prompt='If no, are you authorized to work in the United States?' name='authorized' }
+            {include file='yesno.tpl' prompt_class='span6' radio_class='span2' prompt='Have you ever worked for this company?' name='prior_employment' }
+            {include file='yesno.tpl' prompt_class='span6' radio_class='span2' prompt='Have you ever been convicted of a felony?' name='felony' }
+            <textarea rows="4" name="felony_explain" placeholder="If yes, please explain"></textarea>
           </fieldset>
         </div>
-        <fieldset>
-          <legend>Education</legend>
-            {include file='education_row.tpl' prefix='hs_' address_to_label='High School'}
-            {include file='education_row.tpl' prefix='college_' address_to_label='College'}
-            {include file='education_row.tpl' prefix='other_' address_to_label='Other'}
-        </fieldset>
+        <div class="row">
+          <fieldset>
+            <legend>Education</legend>
+              {include file='education_row.tpl' prefix='hs_' address_to_label='High School'}
+              <hr>
+              {include file='education_row.tpl' prefix='college_' address_to_label='College'}
+              <hr>
+              {include file='education_row.tpl' prefix='other_' address_to_label='Other'}
+          </fieldset>
+        </div>
         <fieldset>
           <legend>References</legend>
           <strong>Please list three (3) professional references.</strong>
