@@ -1,7 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta charset="UTF-8">
     <title>Temecula Catering - Application</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.3.custom.min.css">
@@ -23,7 +23,7 @@
         <h1 class="text-center">Temecula Catering Employment Application</h1>
         <p>Thank you for your interest in employment with Temecula Catering. Please fill out the fields below for consideration.</p>
       </div>
-      <form class="row" action="{* action needed *}" method="POST" enctype="multipart/form-data">
+      <form class="row" action="" method="POST" enctype="multipart/form-data">
         <div class="row">
           <fieldset class="span12 offset3">
             <input id="last_name" class="input-medium" placeholder="Last Name" type="text" name="last_name">
@@ -36,35 +36,27 @@
             <legend>Contact Information</legend>
             {include file='address.tpl' prefix='contact_' address_to_label='Address'}
             <div class="form-horizontal">
-              <div class="control-group">
-                <label class="control-label" for="driver_license">Driver License Number</label>
-                <div class="controls">
-                  <input id="driver_license" class="input-small" type="text" name="driver_license">
-                </div>
-              </div>
-              <div class="control-group">
-                <label class="control-label" for="phone_number">Phone Number</label>
-                <div class="controls">
-                  <input id="phone_number" class="input-medium" type="text" name="phone_number">
-                </div>
-              </div>
-              <div class="control-group">
-                <label class="control-label" for="email">Email</label>
-                <div class="controls">
-                  <input id="email" class="input-large" type="text" name="email">
-                </div>
-              </div>
+              {include file='control-group.tpl'
+                input_class='input-small'
+                label_text='Driver License Number'
+                name='driver_license'}
+              {include file='control-group.tpl'
+                input_class='input-medium'
+                label_text='Phone Number'
+                name='phone_number'}
+              {include file='control-group.tpl'
+                input_class='input-large'
+                label_text='Email'
+                name='email'}
             </div>
           </fieldset>
           <fieldset class="span6">
             <legend>Applicant Information</legend>
             <div class="form-horizontal">
-              <div class="control-group">
-                <label class="control-label" for="date_available">Date Available</label>
-                <div class="controls">
-                  <input id="date_available" class="datepicker input-small" type="text" name="date_available">
-                </div>
-              </div>
+              {include file='control-group.tpl'
+                input_class='datepicker input-small'
+                label_text='Date Available'
+                name='date_available'}
               <div class="control-group">
                 <label class="control-label" for="desired_salary">Desired Salary</label>
                 <div class="controls">
@@ -78,12 +70,12 @@
           </fieldset>
           <fieldset class="span6">
             <legend>Position Desired</legend>
-            <label class="checkbox"><input type="checkbox" name="position_desired" value="busser">Busser</label>
-            <label class="checkbox"><input type="checkbox" name="position_desired" value="server">Server</label>
-            <label class="checkbox"><input type="checkbox" name="position_desired" value="lead_server">Lead Server</label>
-            <label class="checkbox"><input type="checkbox" name="position_desired" value="cook">Cook</label>
-            <label class="checkbox"><input type="checkbox" name="position_desired" value="sous_chef">Sous Chef</label>
-            <label class="checkbox"><input type="checkbox" name="position_desired" value="dishwasher">Dishwasher</label>
+            <label class="checkbox"><input type="checkbox" name="position_desired[]" value="busser">Busser</label>
+            <label class="checkbox"><input type="checkbox" name="position_desired[]" value="server">Server</label>
+            <label class="checkbox"><input type="checkbox" name="position_desired[]" value="lead_server">Lead Server</label>
+            <label class="checkbox"><input type="checkbox" name="position_desired[]" value="cook">Cook</label>
+            <label class="checkbox"><input type="checkbox" name="position_desired[]" value="sous_chef">Sous Chef</label>
+            <label class="checkbox"><input type="checkbox" name="position_desired[]" value="dishwasher">Dishwasher</label>
           </fieldset>
         </div>
         <div class="row">
@@ -108,9 +100,11 @@
         </div>
         <fieldset>
           <legend>References</legend>
-          <strong>Please list three (3) professional references.</strong>
+          <p><strong>Please list three (3) professional references.</strong></p>
           {include file='reference_row.tpl' prefix='reference1_' address_to_label='Address'}
+          <hr>
           {include file='reference_row.tpl' prefix='reference2_' address_to_label='Address'}
+          <hr>
           {include file='reference_row.tpl' prefix='reference3_' address_to_label='Address'}
         </fieldset>
         <fieldset>

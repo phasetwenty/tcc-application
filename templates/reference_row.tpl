@@ -1,11 +1,23 @@
-<fieldset>
-  <label for="{$prefix}full_name">Full Name:</label>
-  <input id="{$prefix}full_name" type="text" name="{$prefix}full_name">
-  <label for="{$prefix}relationship">Relationship:</label>
-  <input id="{$prefix}relationship" type="text" name="{$prefix}relationship">
-  <label for="{$prefix}phone">Phone:</label>
-  <input id="{$prefix}phone" type="text" name="{$prefix}phone">
-  <label for="{$prefix}company">Company:</label>
-  <input id="{$prefix}company" type="text" name="{$prefix}company">
-  {include file='address.tpl'}
+<fieldset class="row">
+  <div class="form-horizontal span6">
+    {include file='control-group.tpl'
+      input_class='input-medium'
+      label_text='Full Name'
+      name="`$prefix`full_name"}
+    {include file='control-group.tpl'
+      input_class='input-medium'
+      label_text='Relationship'
+      name="$`prefix`relationship"}
+    {include file='control-group.tpl'
+      input_class='input-medium'
+      label_text='Phone Number'
+      name="`$prefix`phone"}
+    {include file='control-group.tpl'
+      input_class='input-medium'
+      label_text='Company'
+      name="`$prefix`company"}
+  </div>
+  <div class="span6">
+    {include file='address.tpl' prefix="`$prefix`address_"}
+  </div>
 </fieldset>
