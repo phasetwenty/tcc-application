@@ -61,6 +61,18 @@ class Form {
     return is_numeric($value);
   }
 
+  private function validatePositionDesired($value) {
+    if (is_array($value)) {
+      $positions = array('busser', 'server', 'lead_server', 'cook', 'sous_chef', 'dishwasher');
+      foreach ($positions as $position) {
+        if (in_array($position, $value)) {
+          return TRUE;
+        }
+      }
+    }
+    return FALSE;
+  }
+
   private function validateYear($value) {
     $yearInt = intval($value);
     return $yearInt >= 1900 && $yearInt <= getdate()['year'];
