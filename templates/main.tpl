@@ -5,6 +5,7 @@
     <title>Temecula Catering - Application</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.3.custom.min.css">
+    <link rel="stylesheet" type="text/css" href="css/tcc-application.css">
     <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -36,15 +37,15 @@
             <legend>Contact Information</legend>
             {include file='address.tpl' prefix='contact_' address_to_label='Address'}
             <div class="form-horizontal">
-              {include file='control-group.tpl'
+              {include file='control_group.tpl'
                 input_class='input-small'
                 label_text='Driver License Number'
                 name='driver_license'}
-              {include file='control-group.tpl'
+              {include file='control_group.tpl'
                 input_class='input-medium'
                 label_text='Phone Number'
                 name='phone_number'}
-              {include file='control-group.tpl'
+              {include file='control_group.tpl'
                 input_class='input-large'
                 label_text='Email'
                 name='email'}
@@ -53,19 +54,14 @@
           <fieldset class="span6">
             <legend>Applicant Information</legend>
             <div class="form-horizontal">
-              {include file='control-group.tpl'
+              {include file='control_group.tpl'
                 input_class='datepicker input-small'
                 label_text='Date Available'
                 name='date_available'}
-              <div class="control-group">
-                <label class="control-label" for="desired_salary">Desired Salary</label>
-                <div class="controls">
-                  <div class="input-prepend">
-                    <span class="add-on">$</span>
-                    <input id="desired_salary" class="input-mini" type="text" name="desired_salary">
-                  </div>
-                </div>
-              </div>
+              {include file='control_group_dollar.tpl'
+                input_class='input-mini'
+                label_text='Desired Salary'
+                name='desired_salary'}
             </div>
           </fieldset>
           <fieldset class="span6">
@@ -109,9 +105,11 @@
         </fieldset>
         <fieldset>
           <legend>Previous Employment</legend>
-          <strong>Please list up to the last three (3) previous employers.</strong>
+          <p><strong>Please list up to the last three (3) previous employers.</strong></p>
           {include file='previous_employment_row.tpl' prefix='previous_employment1_'}
+          <hr>
           {include file='previous_employment_row.tpl' prefix='previous_employment2_'}
+          <hr>
           {include file='previous_employment_row.tpl' prefix='previous_employment3_'}
         </fieldset>
         <fieldset>

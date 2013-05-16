@@ -1,0 +1,11 @@
+/*
+ * tcc-application.css
+ * Stylesheet to fill in the gaps from bootstrap.
+ */
+
+.salary-group {
+  /* 
+   * Meant to mimic .form-horizontal.
+   */
+  margin-bottom: 20px;
+}
