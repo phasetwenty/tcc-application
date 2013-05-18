@@ -1,22 +1,50 @@
 <?php
 class Form {
-  private $dateFields = array('date_available')
-  private $positionFields = array('busser', 'server', 'lead_server', 'cook', 'sous_chef', 'dishwasher');
-  private $numericFields = array('desired_salary');
-  private $requiredFields = array('last_name', 'first_name', 'contact_address_to', 'contact_city', 
-    'contact_zip', 'driver_license', 'phone_number');
+  private static $booleanFields = array('authorized', 'carry', 'cheerful', 'citizen', 'felony', 
+    'holidays', 'late_nights', 'memorize', 'lift', 'prior_employment', 'standing', 'workday');
+  private static $dateFields = array('date_available');
+  private static $numericFields = array('desired_salary');
+  private static $requiredFields = array('last_name', 'first_name', 'contact_address_to', 
+    'contact_city', 'contact_zip', 'driver_license', 'phone_number');
 
+  private $cleaned;
   private $cleanedData;
   private $data;
   private $errors;
-  private $cleaned;
 
-  public __construct($data) {
+  public function __construct($data) {
     $this->data = $data;
     $this->cleaned = FALSE;
+    $this->cleanedDate = array();
+    $this->errors = array();
   }
 
-  public function clean() {
+  public function &cleanedData() {
+    if (!$this->cleaned) {
+      $this->clean();
+    }
+    return $this->cleanedData;
+  }
+
+  public function getErrors() {
+    if (!$this->cleaned) {
+      $this->clean();
+
+
+    }
+
+    return $this->errors;
+  }
+
+  public function isValid() {
+    if (!$this->cleaned) {
+      $this->clean();
+      $this->getErrors();
+    }
+    return empty($this->errors);
+  }
+
+  private function clean() {
     $this->cleanedData = array();
     foreach ($data as $k => $v) {
       $this->cleanedData[$k] = mysql_real_escape_string(htmlentities($v));
@@ -24,58 +52,25 @@ class Form {
     $this->cleaned = TRUE;
   }
 
-  public function getErrors() {
-    if (!$this->cleaned) {
-      $this->clean();
-    }
-
-    foreach ($requiredFields as $k => $v) {
-      if (!array_key_exists($k, $cleanedData) ||
-          empty($cleanedData[$k])) {
-        errors[$k] = 'This field is required.';
-      }
-    }
-  }
-
-  public function hasErrors() {
-    if (!$this->cleaned) {
-      $this->clean();
-      $this->getErrors();
-    }
-    return !empty($this->errors);
-  }
-
-  public function isValid() {
-    return $this->hasErrors();
-  }
-
   private function isRequired($key) {
     return array_key_exists($key, $requiredFields);
   }
 
-  private function validateDate($value) {
-    return strptime($value, "%m/%d/%Y") === FALSE;
-  }
-
-  private function validateNumber($value) {
-    return is_numeric($value);
-  }
-
-  private function validatePositionDesired($value) {
-    if (is_array($value)) {
-      $positions = array('busser', 'server', 'lead_server', 'cook', 'sous_chef', 'dishwasher');
-      foreach ($positions as $position) {
-        if (in_array($position, $value)) {
-          return TRUE;
-        }
+  /*
+   * This was not done in the style of the other validators because to work the way I want,
+   * it operates directly on Form class members like $errors and $cleanedData.
+   */
+  private function validateRequired($fields, $message) {
+    /*
+    $mapMessageToFields = array(
+      'This field is required.' => self::$requiredFields,
+      'Please make a selection.' => self::$booleanFields);
+     */
+    foreach ($fields as $fieldName) {
+      if (!array_key_exists($fieldName, $this->cleanedData)) {
+        $this->errors[$fieldName] = $message;
       }
     }
-    return FALSE;
-  }
-
-  private function validateYear($value) {
-    $yearInt = intval($value);
-    return $yearInt >= 1900 && $yearInt <= getdate()['year'];
   }
 }
 ?>
