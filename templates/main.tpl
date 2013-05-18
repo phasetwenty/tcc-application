@@ -112,20 +112,43 @@
           <hr>
           {include file='previous_employment_row.tpl' prefix='previous_employment3_'}
         </fieldset>
-        <fieldset>
+        <fieldset class="row">
           <legend>Military Service</legend>
-          <label for="military_branch">Branch:</label>
-          <input id="military_branch" type="text" name="military_branch">
-          <label for="military_from_Month">From:</label>
-          {html_select_date display_days=FALSE prefix="military_from_" reverse_years=TRUE start_year=-50}
-          <label for="military_to_Month">To:</label>
-          {html_select_date display_days=FALSE prefix="military_to_" reverse_years=TRUE start_year=-50}
-          <label for="military_rank">Ranch at Discharge:</label>
-          <input id="military_rank" type="text" name="military_rank">
-          <label for="military_discharge">Type of Discharge:</label>
-          <input id="military_discharge" type="text" name="military_discharge">
-          <label for="military_explain">If other than honorable, explain:</label>
-          <textarea id="military_explain" rows="10" cols="50" name="military_explain"></textarea>
+          <div class="span12">
+            <div id="military_date" class="offset1 form-inline">
+              <label class="control-label" for="military_from_Month">From</label>
+              {html_select_date
+                all_extra='class="input-small"'
+                display_days=FALSE
+                prefix="military_from_"
+                reverse_years=TRUE
+                start_year=-50}
+              <label class="control-label" for="military_to_Month">To</label>
+                {html_select_date
+                  all_extra='class="input-small"'
+                  display_days=FALSE
+                  prefix="military_to_"
+                  reverse_years=TRUE
+                  start_year=-50}
+            </div>
+            <div class="form-horizontal">
+              {include file='control_group.tpl' 
+                input_class='input-medium' 
+                label_text='Branch' 
+                name='military_branch'}
+              {include file='control_group.tpl'
+                input_class='input-medium'
+                label_text='Rank at Discharge'
+                name='military_rank'}
+              {include file='control_group.tpl'
+                input_class='input-medium'
+                label_text='Type of Discharge'
+                name='military_discharge'}
+            </div>
+            <div class="offset2">
+              <textarea id="military_explain" rows="5" name="military_explain" placeholder="If other than honorable, please explain"></textarea>
+            </div>
+          </div>
         </fieldset>
         <fieldset>
           <legend>Job Performance</legend>

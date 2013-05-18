@@ -3,7 +3,7 @@
  * Stylesheet to fill in the gaps from bootstrap.
  */
 
-.salary-group {
+.salary-group, #military_date {
   /* 
    * Meant to mimic .form-horizontal.
    */
