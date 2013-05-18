@@ -150,44 +150,51 @@
             </div>
           </div>
         </fieldset>
-        <fieldset>
+        <fieldset class="row">
           <legend>Job Performance</legend>
-          <fieldset>
+          <fieldset class="span12">
             <legend>Ability</legend>
-            {include file='yesno.tpl' prompt='Are you able to memorize menus and last minute additions to menus?' name='memorize'}
-            {include file='yesno.tpl' prompt='Are you able to work an eight (8) hour shift?' name='workday'}
-            {include file='yesno.tpl' prompt='Are you able to stand for long periods?' name='standing'}
-            {include file='yesno.tpl' prompt='Are you able to lift up to 50 lbs?' name='lift'}
-            {include file='yesno.tpl' prompt='Are you available to work weekends and holidays?' name='holidays'}
-            {include file='yesno.tpl' prompt='Are you able to work late nights?' name='late_nights'}
-            {include file='yesno.tpl' prompt='Can you carry a food or beverage tray with no problem?' name='carry'}
-            {include file='yesno.tpl' prompt="Are you able to maintain cheerful, professional attitute even if you're having a bad day?" name='cheerful'}
+            {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt='Are you able to memorize menus and last minute additions to menus?' name='memorize'}
+            {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt='Are you able to work an eight (8) hour shift?' name='workday'}
+            {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt='Are you able to stand for long periods?' name='standing'}
+            {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt='Are you able to lift up to 50 lbs?' name='lift'}
+            {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt='Are you available to work weekends and holidays?' name='holidays'}
+            {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt='Are you able to work late nights?' name='late_nights'}
+            {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt='Can you carry a food or beverage tray with no problem?' name='carry'}
+            {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt="Are you able to maintain cheerful, professional attitute even if you're having a bad day?" name='cheerful'}
           </fieldset>
-          <fieldset>
+          <fieldset class="span12">
             <legend>Transportation</legend>
-            {include file='yesno.tpl' prompt='Are you able to travel to different job sites outside of Temecula?' name='outside'}
-            {include file='yesno.tpl' prompt="Do you have a valid California driver's license?" name='license_valid'}
-            {include file='yesno.tpl' prompt='Do you have reliable transportation?' name='reliable'}
-            {include file='yesno.tpl' prompt='Do you currently have a friend or relative working for Temecula Catering?' name='friend'}
-            {include file='yesno.tpl' prompt='Do you have <strong>daily</strong> access to email?' name='email_access'}
-            {include file='yesno.tpl' prompt='Do you have a <strong>reliable</strong> cell phone?' name='phone_reliable'}
-            {include file='yesno.tpl' prompt='Will you submit to drug screening prior to employment and random screenings?' name='screening'}
+            {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt='Are you able to travel to different job sites outside of Temecula?' name='outside'}
+            {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt="Do you have a valid California driver's license?" name='license_valid'}
+            {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt='Do you have reliable transportation?' name='reliable'}
+          </fieldset>
+          <fieldset class="span12">
+            <legend>Other</legend>
+            {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt='Do you currently have a friend or relative working for Temecula Catering?' name='friend'}
+            {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt='Do you have <strong>daily</strong> access to email?' name='email_access'}
+            {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt='Do you have a <strong>reliable</strong> cell phone?' name='phone_reliable'}
+            {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt='Will you submit to drug screening prior to employment and random screenings?' name='screening'}
           </fieldset>
           <fieldset>
             <legend>Disclaimer and Signature</legend>
             <p><em>I certify that my answers are true and complete to the best of my knowledge.</em></p>
             <p><em>If this application leads to employment, I understand that false or misleading information in my application or interview may result in my immediate release.</em></p>
-            <label for="signature_name">Name:</label>
-            <input id="signature_name" type="text" name="signature_name">
-            <label for="signature_date">Date:</label>
-            <input id="signature_date" class="datepicker" type="text" name="signature_date">
+            <div class="offset1 form-inline">
+              <label class="control-label" for="signature_date">Name</label>
+              <input id="signature_date" class="input-large" type="text" name="signature_name">
+              <label class="control-label" for="signature_date">Date</label>
+              <input id="signature_date" class="input-small" type="text" name="signature_date" value="{$smarty.now|date_format:'%m/%d/%Y'}">
+            </div>
             <p><em>Please take a moment to double check your application prior to submitting.</em></p>
-            <input type="submit" value="Apply">
+            <div class="offset4">
+              <input class="btn btn-large" type="submit" value="Apply">
+            </div>
           </fieldset>
         </fieldset>
       </form>
-      <div id="footer">
-        <p>Copyright {$smarty.now|date_format:"%Y"} Temecula Catering</p>
+      <div id="footer" class="row">
+        <p class="muted">Copyright {$smarty.now|date_format:"%Y"} Temecula Catering</p>
       </div>
     </div>
   </body>
