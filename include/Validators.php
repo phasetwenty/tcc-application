@@ -11,7 +11,7 @@
     const MESSAGE = 'Please enter a number.';
 
     public static function validate($value) {
-      return is_numeric($value);
+      return is_numeric($value) ? TRUE : MESSAGE;
     }
   }
 
@@ -29,24 +29,20 @@
           }
         }
       }
-      return FALSE;
+      return MESAGE;
     }
   }
 
   class RequiredFieldValidator {
     const MESSAGE = 'This field is required.';
 
-    private static $booleanFields = array('authorized', 'carry', 'cheerful', 'citizen', 'felony', 
-      'holidays', 'late_nights', 'memorize', 'lift', 'prior_employment', 'standing', 'workday');
 
-    private static $requiredFields = array('last_name', 'first_name', 'contact_address_to', 
-      'contact_city', 'contact_zip', 'driver_license', 'phone_number');
 
     public static function validate($value) {
       if (is_array($value)) {
 
       }
-      return FALSE;
+      return MESSAGE;
     }
   }
 
@@ -55,7 +51,7 @@
 
     public static function validate($value) {
       $int = intval($value);
-      return $int >= 1900 && $int <= getdate()['year'];
+      return $int >= 1900 && $int <= getdate()['year'] ? TRUE : MESSAGE;
     }
   }
 
