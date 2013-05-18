@@ -26,11 +26,12 @@ class Form {
     return $this->cleanedData;
   }
 
-  public function getErrors() {
+  public function errors() {
     if (!$this->cleaned) {
       $this->clean();
 
-
+      $this->validateRequired($this->booleanFields, 'Please make a selection.');
+      $this->validateRequired($this->requiredFields, 'This field is required.');
     }
 
     return $this->errors;
@@ -39,14 +40,14 @@ class Form {
   public function isValid() {
     if (!$this->cleaned) {
       $this->clean();
-      $this->getErrors();
+      $this->errors();
     }
     return empty($this->errors);
   }
 
   private function clean() {
     $this->cleanedData = array();
-    foreach ($data as $k => $v) {
+    foreach ($this->data as $k => $v) {
       $this->cleanedData[$k] = mysql_real_escape_string(htmlentities($v));
     }
     $this->cleaned = TRUE;
