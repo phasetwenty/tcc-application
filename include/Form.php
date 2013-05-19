@@ -28,9 +28,8 @@ class Form {
   }
 
   public function errors() {
-    if (!$this->cleaned) {
-      $this->clean();
-    }
+    $this->clean();
+
     if (empty($this->errors)) {
       $this->validateRequired(self::$booleanFields, 'Please make a selection.');
       $this->validateRequired(self::$requiredFields, 'This field is required.');
@@ -40,19 +39,28 @@ class Form {
   }
 
   public function isValid() {
-    if (!$this->cleaned) {
-      $this->clean();
-      $this->errors();
-    }
+    $this->clean();
+    $this->errors();
     return empty($this->errors);
   }
 
   private function clean() {
-    $this->cleanedData = array();
-    foreach ($this->data as $k => $v) {
-      $this->cleanedData[$k] = mysql_real_escape_string(htmlentities($v));
+    if (!$this->cleaned) {
+      $this->cleanedData = $this->cleanHelper($this->data);
     }
-    $this->cleaned = true;
+    return $this->cleanedData;
+  }
+
+  private function cleanHelper($array) {
+    $result = array();
+    foreach ($array as $k => $v) {
+      if (!is_array($v)) {
+        $result[$k] = mysql_real_escape_string(htmlentities($v));
+      } else {
+        $result[$k] = $this->cleanHelper($v);
+      }
+    }
+    return $result;
   }
 
   private function isRequired($key) {
