@@ -3,7 +3,7 @@
     const MESSAGE = 'Please enter a valid date.';
 
     public static function validate($value) {
-      return strptime($value, "%m/%d/%Y") === TRUE ? TRUE : MESSAGE;
+      return strptime($value, "%m/%d/%Y") === true ? true : MESSAGE;
     }
   }
 
@@ -11,7 +11,7 @@
     const MESSAGE = 'Please enter a number.';
 
     public static function validate($value) {
-      return is_numeric($value) ? TRUE : MESSAGE;
+      return is_numeric($value) ? true : MESSAGE;
     }
   }
 
@@ -25,7 +25,7 @@
       if (is_array($value)) {
         foreach (self::$positionFields as $position) {
           if (in_array($position, $value)) {
-            return TRUE;
+            return true;
           }
         }
       }
@@ -51,7 +51,7 @@
 
     public static function validate($value) {
       $int = intval($value);
-      return $int >= 1900 && $int <= getdate()['year'] ? TRUE : MESSAGE;
+      return $int >= 1900 && $int <= getdate()['year'] ? true : MESSAGE;
     }
   }
 

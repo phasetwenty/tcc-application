@@ -7,7 +7,7 @@
     {include file='control_group.tpl'
       input_class='input-medium'
       label_text='Relationship'
-      name="$`prefix`relationship"}
+      name="`$prefix`relationship"}
     {include file='control_group.tpl'
       input_class='input-medium'
       label_text='Phone Number'

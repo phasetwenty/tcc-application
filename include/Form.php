@@ -5,7 +5,8 @@ class Form {
   private static $dateFields = array('date_available');
   private static $numericFields = array('desired_salary');
   private static $requiredFields = array('last_name', 'first_name', 'contact_address_to', 
-    'contact_city', 'contact_zip', 'driver_license', 'phone_number');
+    'contact_address_city', 'contact_address_state', 'contact_address_zip', 'driver_license', 
+    'email', 'phone_number');
 
   private $cleaned;
   private $cleanedData;
@@ -14,7 +15,7 @@ class Form {
 
   public function __construct($data) {
     $this->data = $data;
-    $this->cleaned = FALSE;
+    $this->cleaned = false;
     $this->cleanedData = array();
     $this->errors = array();
   }
@@ -51,7 +52,7 @@ class Form {
     foreach ($this->data as $k => $v) {
       $this->cleanedData[$k] = mysql_real_escape_string(htmlentities($v));
     }
-    $this->cleaned = TRUE;
+    $this->cleaned = true;
   }
 
   private function isRequired($key) {
@@ -69,7 +70,8 @@ class Form {
       'Please make a selection.' => self::$booleanFields);
      */
     foreach ($fields as $fieldName) {
-      if (!array_key_exists($fieldName, $this->cleanedData)) {
+      if (!array_key_exists($fieldName, $this->cleanedData) ||
+          trim($this->cleanedData[$fieldName]) == false) {
         $this->errors[$fieldName] = $message;
       }
     }

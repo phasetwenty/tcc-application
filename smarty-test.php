@@ -21,7 +21,8 @@
 
     $smarty->display('main.tpl');
     printf("<pre>Errors\n%s</pre>", var_export($form->errors(), true));
-    printf('<pre>_POST\n%s</pre>', var_export($_POST, true));
+    printf("<pre>Context\n%s</pre>", var_export($form->cleanedData(), true));
+    printf("<pre>_POST\n%s</pre>", var_export($_POST, true));
   } else {
     $smarty->display('main.tpl');
   }
