@@ -6,7 +6,9 @@
       Yes
     </label>
     <label class="radio inline">
-      <input type="radio" name="{$name}" value="no" {if array_key_exists($name, $context) && $context[$name] eq 'no'}checked{/if}>No</label>
+      <input type="radio" name="{$name}" value="no" {if array_key_exists($name, $context) && $context[$name] eq 'no'}checked{/if}>
+      No
+    </label>
     {if array_key_exists($name, $errors)}
       <span class="help-inline">{$errors[$name]}</span>
     {/if}
