@@ -47,7 +47,7 @@
           input_class='input-medium'
           label_text='Reason for leaving'
           name="`$prefix`leaving"}
-        {include file='yesno.tpl' name="`$prefix`contact_employer" prompt='May we contact this employer for a reference?'}
+        {include file='yesno.tpl' name="`$prefix`contact_employer" prompt_class='' radio_class='' prompt='May we contact this employer for a reference?'}
       </div>
     </div>
   </div>

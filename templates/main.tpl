@@ -26,6 +26,13 @@
       </div>
       <form class="row" action="" method="POST" enctype="multipart/form-data">
         <div class="row">
+          {if !empty($errors)}
+            <div class="span7">
+              <div class="alert alert-error">
+                There were problems with your submission. See below for the errors.
+              </div>
+            </div>
+          {/if}
           <fieldset class="span12 offset3">
             <input id="last_name" class="input-medium" placeholder="Last Name" type="text" name="last_name">
             <input id="first_name" class="input-medium" placeholder="First Name" type="text" name="first_name">
@@ -77,10 +84,10 @@
         <div class="row">
           <fieldset class="span12">
             <legend>Status</legend>
-            {include file='yesno.tpl' prompt_class='span6' radio_class='span2' prompt='Are you a citizen of the United States?' name='citizen' }
-            {include file='yesno.tpl' prompt_class='span6' radio_class='span2' prompt='If no, are you authorized to work in the United States?' name='authorized' }
-            {include file='yesno.tpl' prompt_class='span6' radio_class='span2' prompt='Have you ever worked for this company?' name='prior_employment' }
-            {include file='yesno.tpl' prompt_class='span6' radio_class='span2' prompt='Have you ever been convicted of a felony?' name='felony' }
+            {include file='yesno.tpl' prompt_class='span6' radio_class='span6' prompt='Are you a citizen of the United States?' name='citizen' }
+            {include file='yesno.tpl' prompt_class='span6' radio_class='span6' prompt='If no, are you authorized to work in the United States?' name='authorized' }
+            {include file='yesno.tpl' prompt_class='span6' radio_class='span6' prompt='Have you ever worked for this company?' name='prior_employment' }
+            {include file='yesno.tpl' prompt_class='span6' radio_class='span6' prompt='Have you ever been convicted of a felony?' name='felony' }
             <textarea rows="4" name="felony_explain" placeholder="If yes, please explain"></textarea>
           </fieldset>
         </div>

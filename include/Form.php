@@ -15,7 +15,7 @@ class Form {
   public function __construct($data) {
     $this->data = $data;
     $this->cleaned = FALSE;
-    $this->cleanedDate = array();
+    $this->cleanedData = array();
     $this->errors = array();
   }
 
@@ -29,9 +29,10 @@ class Form {
   public function errors() {
     if (!$this->cleaned) {
       $this->clean();
-
-      $this->validateRequired($this->booleanFields, 'Please make a selection.');
-      $this->validateRequired($this->requiredFields, 'This field is required.');
+    }
+    if (empty($this->errors)) {
+      $this->validateRequired(self::$booleanFields, 'Please make a selection.');
+      $this->validateRequired(self::$requiredFields, 'This field is required.');
     }
 
     return $this->errors;
