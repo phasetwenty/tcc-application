@@ -6,7 +6,7 @@
   define('WORKING_DIR', '/var/www/tcc-application/');
 
   $smarty = new Smarty();
-  $smarty->setTemplateDir(PROJECT_ROOT . 'templates/');
+  $smarty->setTemplateDir(array(PROJECT_ROOT . 'templates/web/', PROJECT_ROOT . 'templates/email/'));
   $smarty->setCompileDir(WORKING_DIR . 'compile/');
   $smarty->setCacheDir(WORKING_DIR . 'cache/');
 
