@@ -1,72 +1,67 @@
-{* Separating to make debugging easier. *}
-<div class="row">
-  <h1 class="text-center">Temecula Catering Employment Application</h1>
-</div>
-<div class="row">
-  <div class="span12">
-    <h1>{$last_name}, {$first_name}</h1>
+<div class="container">
+  <div class="row">
+    <h1 class="text-center">Temecula Catering Employment Application</h1>
+  </div>
+  <div class="row">
+    <h1 class="text-center">{$context['last_name']}, {$context['first_name']}</h1>
+  </div>
+  <div class="row">
+    <div class="span6">
+      <h3>Contact Information</h3>
+      <address>
+        {$context['contact_address_street_number']}<br>
+        {$context['contact_address_city']}, {$context['contact_address_state']} {$context['contact_address_zip']}<br>
+        Phone: {$context['phone_number']} | Email: {$context['email']}
+      </address>
+      Driver License: {$context['driver_license']}
+    </div>
+    <div class="span6">
+      <h3>Applicant Information</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Date Available</th>
+            <th>Desired Salary</th>
+            <th>Position Desired</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{$context['date_available']}</td>
+            <td>{$context['desired_salary']}</td>
+            <td>{$context['position_desired_str']}</td>
+          </tr>
+        </tbody>
+      </table>
+      <ul>
+        <li>Citizen: {$context['citizen']}</li>
+        <li>Authorized to work: {$context['authorized']}</li>
+        <li>Ever worked for this company: {$context['prior_employment']}</li>
+        <li>Felony conviction: {$context['felony']}</li>
+      </ul>
+      {if !empty($context['felony_explain'])}
+        <div class="well">
+          <p>
+            {$context['felony_explain']}
+          </p>
+        </div>
+      {/if}
+    </div>
+  </div>
+  <div class="row">
+    {if !empty($context['hs_address_to'])}
+      <div class="span12">
+        <h3>High School</h3>
+        <address>
+          <strong>{$context['hs_address_to']}</strong><br>
+          {$context['hs_address_street_number']}<br>
+          {$context['hs_address_city']}, {$context['hs_address_state']} {$context['hs_address_zip']}
+        </address>
+      </div>
+    {/if}
   </div>
 </div>
-
 {*
-  <fieldset class="span12 offset3">
-    <input id="last_name" class="input-medium" placeholder="Last Name" type="text" name="last_name">
-    <input id="first_name" class="input-medium" placeholder="First Name" type="text" name="first_name">
-    <input id="middle_initial" class="input-mini" placeholder="MI" type="text" name="middle_initial">
-  </fieldset>
-</div>
-<div class="row">
-  <fieldset class="span6">
-    <legend>Contact Information</legend>
-    {include file='address.tpl' prefix='contact_' address_to_label='Address'}
-    <div class="form-horizontal">
-      {include file='control_group.tpl'
-        input_class='input-small'
-        label_text='Driver License Number'
-        name='driver_license'}
-      {include file='control_group.tpl'
-        input_class='input-medium'
-        label_text='Phone Number'
-        name='phone_number'}
-      {include file='control_group.tpl'
-        input_class='input-large'
-        label_text='Email'
-        name='email'}
-    </div>
-  </fieldset>
-  <fieldset class="span6">
-    <legend>Applicant Information</legend>
-    <div class="form-horizontal">
-      {include file='control_group.tpl'
-        input_class='datepicker input-small'
-        label_text='Date Available'
-        name='date_available'}
-      {include file='control_group_dollar.tpl'
-        input_class='input-mini'
-        label_text='Desired Salary'
-        name='desired_salary'}
-    </div>
-  </fieldset>
-  <fieldset class="span6">
-    <legend>Position Desired</legend>
-    <label class="checkbox"><input type="checkbox" name="position_desired[]" value="busser">Busser</label>
-    <label class="checkbox"><input type="checkbox" name="position_desired[]" value="server">Server</label>
-    <label class="checkbox"><input type="checkbox" name="position_desired[]" value="lead_server">Lead Server</label>
-    <label class="checkbox"><input type="checkbox" name="position_desired[]" value="cook">Cook</label>
-    <label class="checkbox"><input type="checkbox" name="position_desired[]" value="sous_chef">Sous Chef</label>
-    <label class="checkbox"><input type="checkbox" name="position_desired[]" value="dishwasher">Dishwasher</label>
-  </fieldset>
-</div>
-<div class="row">
-  <fieldset class="span12">
-    <legend>Status</legend>
-    {include file='yesno.tpl' prompt_class='span6' radio_class='span6' prompt='Are you a citizen of the United States?' name='citizen' }
-    {include file='yesno.tpl' prompt_class='span6' radio_class='span6' prompt='If no, are you authorized to work in the United States?' name='authorized' }
-    {include file='yesno.tpl' prompt_class='span6' radio_class='span6' prompt='Have you ever worked for this company?' name='prior_employment' }
-    {include file='yesno.tpl' prompt_class='span6' radio_class='span6' prompt='Have you ever been convicted of a felony?' name='felony' }
-    <textarea rows="4" name="felony_explain" placeholder="If yes, please explain"></textarea>
-  </fieldset>
-</div>
 <div class="row">
   <fieldset>
     <legend>Education</legend>

@@ -5,8 +5,8 @@ class Form {
   private static $dateFields = array('date_available');
   private static $numericFields = array('desired_salary');
   private static $requiredFields = array('last_name', 'first_name', 'contact_address_to', 
-    'contact_address_city', 'contact_address_state', 'contact_address_zip', 'driver_license', 
-    'email', 'phone_number');
+    'contact_address_street_number', 'contact_address_city', 'contact_address_state', 
+    'contact_address_zip', 'driver_license', 'email', 'phone_number');
 
   private $cleaned;
   private $cleanedData;
@@ -55,7 +55,7 @@ class Form {
     $result = array();
     foreach ($array as $k => $v) {
       if (!is_array($v)) {
-        $result[$k] = mysql_real_escape_string(htmlentities($v));
+        $result[$k] = htmlentities($v);
       } else {
         $result[$k] = $this->cleanHelper($v);
       }

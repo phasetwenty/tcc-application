@@ -1,29 +1,31 @@
 <?php
   require_once('include/Smarty-3.1.13/Smarty.class.php');
   require_once('include/Form.php');
+  require_once('include/PostProcessor.php');
 
   define('PROJECT_ROOT', '/home/chris/Workspace/tcc-application/');
   define('WORKING_DIR', '/var/www/tcc-application/');
 
-  $application = new Smarty();
-  $application->setTemplateDir(PROJECT_ROOT . 'templates/web/');
-  $application->setCompileDir(WORKING_DIR . 'compile/');
-  $application->setCacheDir(WORKING_DIR . 'cache/');
+  error_reporting(E_ERROR);
 
-  $application->assign('errors', array());
-  $application->assign('context', array());
+  $smarty = new Smarty();
+  $smarty->setTemplateDir(array(PROJECT_ROOT . 'templates/',
+    'web' => PROJECT_ROOT . 'templates/web/',
+    'email' => PROJECT_ROOT . 'templates/email/'));
+  $smarty->setCompileDir(WORKING_DIR . 'compile/');
+  $smarty->setCacheDir(WORKING_DIR . 'cache/');
+  $smarty->debugging = true;
+
+  $smarty->assign('errors', array());
+  $smarty->assign('context', array());
   $form = new Form($_POST);
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $_ = $form->isValid();
-    $application->assign('errors', $form->errors());
-    $application->assign('context', $form->cleanedData());
+    $smarty->assign('errors', $form->errors());
     
-    $email = new Smarty();
-    $email->setTemplateDir(PROJECT_ROOT . 'templates/email/');
-    $email->setCompileDir(WORKING_DIR . 'compile/');
-    $email->setCacheDir(WORKING_DIR . 'cache/');
-    $email->assign($form->cleanedData());
-    $email->display('body.tpl');
+    $postProcessor = new PostProcessor($form->cleanedData());
+    $context = $postProcessor->process();
+    $smarty->assign('context', $context);
     /*
     if ($form->isValid()) {
       // Create email
@@ -33,8 +35,6 @@
     }
     */
   }
-  $application->display('main.tpl');
-  printf("<pre>Errors\n%s</pre>", var_export($form->errors(), true));
-  printf("<pre>Context\n%s</pre>", var_export($form->cleanedData(), true));
-  printf("<pre>_POST\n%s</pre>", var_export($_POST, true));
+  $smarty->display('debug.tpl');
+
 ?>

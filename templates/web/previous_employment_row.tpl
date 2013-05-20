@@ -1,7 +1,7 @@
 <fieldset class="row">
   <div class="row">
     <div class="span6">
-      {include file='address.tpl' address_to_label='Company' prefix="`$prefix`"}
+      {include file='address.tpl' address_to_label='Company' show_address_to=true prefix="`$prefix`"}
       <div class="form-inline">
         <label for="{$prefix}from_Month">From</label>
         {html_select_date

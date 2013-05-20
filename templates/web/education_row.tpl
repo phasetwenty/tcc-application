@@ -1,6 +1,6 @@
 <fieldset class="row">
   <div class="span6">
-    {include file='address.tpl'}
+    {include file='address.tpl' show_address_to=true}
   </div>
   <div class="span6">
     <div class="row form-inline">

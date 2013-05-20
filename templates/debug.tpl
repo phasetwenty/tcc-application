@@ -10,14 +10,15 @@
     <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript">
-    $(document).ready(function() {
-      $(".datepicker").datepicker();
-    });
+      $(document).ready(function() {
+        $(".datepicker").datepicker();
+      });
     </script>
   </head>
   <body>
-    <div class="container">
-      {include file='file:[web]body.tpl'}
-    </div>
+    {if !empty($context)}
+      {include file='file:[email]body.tpl'}
+    {/if}
+    {include file='file:[web]body.tpl'}
   </body>
 </html>
