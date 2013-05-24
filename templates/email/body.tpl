@@ -49,16 +49,103 @@
     </div>
   </div>
   <div class="row">
-    {if !empty($context['hs_address_to'])}
-      <div class="span12">
-        <h3>High School</h3>
-        <address>
-          <strong>{$context['hs_address_to']}</strong><br>
-          {$context['hs_address_street_number']}<br>
-          {$context['hs_address_city']}, {$context['hs_address_state']} {$context['hs_address_zip']}
-        </address>
-      </div>
-    {/if}
+    <h3>Education</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Address</th>
+          <th>Enrollment</th>
+          <th>Graduated</th>
+          <th>Degree/Diploma</th>
+        </tr>
+      </thead>
+      <tbody>
+        {foreach $context['school_prefixes'] as $school_prefix}
+          {if !empty($context[$school_prefix|cat:'address_to'])}
+            <tr>
+              <td>
+                <address>
+                  <strong>{$context[$school_prefix|cat:'address_to']}</strong><br>
+                  {$context[$school_prefix|cat:'address_street_number']}<br>
+                  {$context[$school_prefix|cat:'address_city']}, {$context[$school_prefix|cat:'address_state']} {$context[$school_prefix|cat:'address_zip']}
+                </address>
+              </td>
+              <td>{$context[$school_prefix|cat:'from_Year']} to {$context[$school_prefix|cat:'to_Year']}</td>
+              <td>{$context[$school_prefix|cat:'graduate']}</td>
+              <td>{$context[$school_prefix|cat:'degree']}</td>
+            </tr>
+          {/if}
+        {/foreach}
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <h3>References</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Address</th>
+          <th>Name</th>
+          <th>Relationship</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+        {foreach $context['reference_prefixes'] as $ref_prefix}
+          {if !empty($context[$ref_prefix|cat:'full_name'])}
+            <tr>
+              <td>
+                <address>
+                  <strong>{$context[$ref_prefix|cat:'company']}</strong><br>
+                  {$context[$ref_prefix|cat:'address_street_number']}<br>
+                  {$context[$ref_prefix|cat:'address_city']}, {$context[$ref_prefix|cat:'address_state']} {$context[$ref_prefix|cat:'address_zip']}
+                </address>
+              </td>
+              <td>{$context[$ref_prefix|cat:'full_name']}</td>
+              <td>{$context[$ref_prefix|cat:'relationship']}</td>
+              <td>{$context[$ref_prefix|cat:'phone']}</td>
+            </tr>
+          {/if}
+        {/foreach}
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <h3>Previous Employment</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Address</th>
+          <th>Salary</th>
+          <th>Supervisor</th>
+          <th>Job Title</th>
+          <th>Reason for leaving</th>
+          <th>Contact?</th>
+          <th>Responsibilities</th>
+        </tr>
+      </thead>
+      <tbody>
+        {foreach $context['prev_employment_prefixes'] as $prev_emloyment_prefix}
+          {if !empty($context[$prev_emloyment_prefix|cat:'address_to'])}
+            <tr>
+              <td>
+                <address>
+                  <strong>{$context[$prev_emloyment_prefix|cat:'address_to']}</strong><br>
+                  {$context[$prev_emloyment_prefix|cat:'address_street_number']}<br>
+                  {$context[$prev_emloyment_prefix|cat:'address_city']}, {$context[$prev_emloyment_prefix|cat:'address_state']} {$context[$prev_emloyment_prefix|cat:'address_zip']}
+                </address>
+              </td>
+              <td>{$context[$prev_emloyment_prefix|cat:'starting_salary']} to {$context[$prev_emloyment_prefix|cat:'ending_salary']}</td>
+              <td>{$context[$prev_emloyment_prefix|cat:'supervisor']}</td>
+              <td>{$context[$prev_emloyment_prefix|cat:'title']}</td>
+              <td>{$context[$prev_emloyment_prefix|cat:'leaving']}</td>
+              <td>{$context[$prev_emloyment_prefix|cat:'contact_employer']}</td>
+              <td>{$context[$prev_emloyment_prefix|cat:'responsibilities']}</td>
+            </tr>
+          {/if}
+        {/foreach}
+      </tbody>
+    </table>
   </div>
 </div>
 {*

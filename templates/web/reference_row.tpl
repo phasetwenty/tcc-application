@@ -18,6 +18,6 @@
       name="`$prefix`company"}
   </div>
   <div class="span6">
-    {include file='address.tpl' show_address_to=true prefix="`$prefix`address_"}
+    {include file='address.tpl' show_address_to=false}
   </div>
 </fieldset>

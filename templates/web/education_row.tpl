@@ -25,7 +25,7 @@
   <div class="row">
     <div class="form-inline">
       <label for="{$prefix}degree">Degree/Diploma</label>
-      <input id="{$prefix}degree" type="text" name="{$prefix}degree">
+      <input id="{$prefix}degree" type="text" name="{$prefix}degree" value="{$context[$prefix|cat:'degree']}">
     </div>
   </div>
 </fieldset>
