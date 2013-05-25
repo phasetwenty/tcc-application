@@ -178,4 +178,33 @@
       </tbody>
     </table>
   </div>
+  {if !empty($context['military_branch'])}
+    <div class="row">
+      <table>
+        <caption><h3>Military Service</h3></caption>
+        <thead>
+          <tr>
+            <th>Branch</th>
+            <th>Time</th>
+            <th>Rank</th>
+            <th>Type of discharge</th>
+            {if !empty($context['military_explain'])}
+              <th>Explanation</th>
+            {/if}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{$context['military_branch']}</td>
+            <td>{$context['military_from_Month']} {$context['military_from_Year']} to {$context['military_to_Month']} {$context['military_to_Year']}</td>
+            <td>{$context['military_rank']}</td>
+            <td>{$context['military_discharge']}</td>
+            {if !empty($context['military_explain'])}
+              <td>{$context['military_explain']}</td>
+            {/if}
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  {/if}
 </div>
