@@ -143,27 +143,21 @@
       <legend>Job Performance</legend>
       <fieldset class="span12">
         <legend>Ability</legend>
-        {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt='Are you able to memorize menus and last minute additions to menus?' name='memorize'}
-        {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt='Are you able to work an eight (8) hour shift?' name='workday'}
-        {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt='Are you able to stand for long periods?' name='standing'}
-        {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt='Are you able to lift up to 50 lbs?' name='lift'}
-        {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt='Are you available to work weekends and holidays?' name='holidays'}
-        {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt='Are you able to work late nights?' name='late_nights'}
-        {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt='Can you carry a food or beverage tray with no problem?' name='carry'}
-        {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt="Are you able to maintain cheerful, professional attitute even if you're having a bad day?" name='cheerful'}
+        {foreach $context['ability'] as $var => $prompt}
+          {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt=$prompt name=$var}
+        {/foreach}
       </fieldset>
       <fieldset class="span12">
         <legend>Transportation</legend>
-        {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt='Are you able to travel to different job sites outside of Temecula?' name='outside'}
-        {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt="Do you have a valid California driver's license?" name='license_valid'}
-        {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt='Do you have reliable transportation?' name='reliable'}
+        {foreach $context['transportation'] as $var => $prompt}
+          {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt=$prompt name=$var}
+        {/foreach}
       </fieldset>
       <fieldset class="span12">
         <legend>Other</legend>
-        {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt='Do you currently have a friend or relative working for Temecula Catering?' name='friend'}
-        {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt='Do you have <strong>daily</strong> access to email?' name='email_access'}
-        {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt='Do you have a <strong>reliable</strong> cell phone?' name='phone_reliable'}
-        {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt='Will you submit to drug screening prior to employment and random screenings?' name='screening'}
+        {foreach $context['other_questions'] as $var => $prompt}
+          {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt=$prompt name=$var}
+        {/foreach}
       </fieldset>
       <fieldset>
         <legend>Disclaimer and Signature</legend>
