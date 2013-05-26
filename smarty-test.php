@@ -43,6 +43,7 @@
     $postProcessor = new PostProcessor($form->cleanedData());
     $context = array_merge($postProcessor->process(), $context);
     if ($isValid) {
+      $smarty->assign('context', $context);
       $body = $smarty->fetch('file:[email]body.tpl');
       $headers = 'Content-type: text/html; charset=utf-8' . "\r\n";
       $context['email_result'] = mail("phasetwenty@gmail.com", 
