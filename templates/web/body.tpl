@@ -8,11 +8,23 @@
   </div>
   <form class="row" action="" method="POST" enctype="multipart/form-data">
     <div class="row">
-      {if !empty($errors)}
+      {if $smarty.server.REQUEST_METHOD == 'POST'}
         <div class="span7">
-          <div class="alert alert-error">
-            There were problems with your submission. See below for the errors.
-          </div>
+          {if array_key_exists('email_result', $context)}
+            {if $context['email_result'] == true}
+              <div class="alert alert-success">
+                Your application was successfully sent!
+              </div>
+            {else}
+              <div class="alert alert-error">
+                There was a problem transmitting your application. Please try again later.
+              </div>
+            {/if}
+          {elseif !empty($errors)}
+            <div class="alert alert-error">
+              There were problems with your submission. See below for the errors.
+            </div>
+          {/if}
         </div>
       {/if}
       <fieldset class="span12 offset3">

@@ -16,7 +16,7 @@
     </script>
   </head>
   <body>
-    {if !empty($context)}
+    {if $smarty.server.REQUEST_METHOD == 'POST'}
       {include file='file:[email]body.tpl'}
     {/if}
     {include file='file:[web]body.tpl'}
