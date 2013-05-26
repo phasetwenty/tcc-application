@@ -3,7 +3,7 @@
     const MESSAGE = 'Please enter a valid date.';
 
     public static function validate($value) {
-      return strptime($value, "%m/%d/%Y") === true ? true : MESSAGE;
+      return is_array(strptime($value, "%m/%d/%Y")) ? true : DateValidator::MESSAGE;
     }
   }
 
@@ -11,7 +11,7 @@
     const MESSAGE = 'Please enter a number.';
 
     public static function validate($value) {
-      return is_numeric($value) ? true : MESSAGE;
+      return is_numeric($value) ? true : NumberValidator::MESSAGE;
     }
   }
 
@@ -29,20 +29,7 @@
           }
         }
       }
-      return MESAGE;
-    }
-  }
-
-  class RequiredFieldValidator {
-    const MESSAGE = 'This field is required.';
-
-
-
-    public static function validate($value) {
-      if (is_array($value)) {
-
-      }
-      return MESSAGE;
+      return PositionValidator::MESSAGE;
     }
   }
 
@@ -51,7 +38,7 @@
 
     public static function validate($value) {
       $int = intval($value);
-      return $int >= 1900 && $int <= getdate()['year'] ? true : MESSAGE;
+      return $int >= 1900 && $int <= getdate()['year'] ? true : YearValidator::MESSAGE;
     }
   }
 

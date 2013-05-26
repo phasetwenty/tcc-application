@@ -1,9 +1,12 @@
-<div class="control-group">
+<div class="control-group {if array_key_exists($name, $errors)}error{/if}">
   <label class="control-label" for="{$name}">{$label_text}</label>
   <div class="controls">
     <div class="input-prepend">
       <span class="add-on">$</span>
       <input id="{$name}" class="{$input_class}" type="text" name="{$name}" value="{$context[$name]}">
+      {if array_key_exists($name, $errors)}
+        <span class="help-inline">{$errors['name']}</span>
+      {/if}
     </div>
   </div>
 </div>
