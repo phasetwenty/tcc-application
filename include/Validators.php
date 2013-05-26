@@ -21,7 +21,7 @@
      * TODO: Put these in a central location so they can't get out of sync with the template values.
      */
     private static $positionFields = array('busser', 'server', 'lead_server', 'cook', 'sous_chef', 
-      'dishwasher');
+      'dishwasher', 'events_equipment_manager');
 
     public static function validate($value) {
       if (is_array($value)) {

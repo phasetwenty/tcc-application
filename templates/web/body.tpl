@@ -86,6 +86,7 @@
           <label class="checkbox"><input type="checkbox" name="position_desired[]" value="cook" {if in_array('cook', $context['position_desired'])}checked{/if}>Cook</label>
           <label class="checkbox"><input type="checkbox" name="position_desired[]" value="sous_chef" {if in_array('sous_chef', $context['position_desired'])}checked{/if}>Sous Chef</label>
           <label class="checkbox"><input type="checkbox" name="position_desired[]" value="dishwasher" {if in_array('dishwasher', $context['position_desired'])}checked{/if}>Dishwasher</label>
+          <label class="checkbox"><input type="checkbox" name="position_desired[]" value="events_equipment_manager" {if in_array('events_equipment_manager', $context['position_desired'])}checked{/if}>Events Equipment Manager</label>
         </div>
       </fieldset>
     </div>
