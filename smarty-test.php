@@ -44,7 +44,11 @@
     $context = array_merge($postProcessor->process(), $context);
     if ($isValid) {
       $body = $smarty->fetch('file:[email]body.tpl');
-      $context['email_result'] = mail("phasetwenty@gmail.com", "Temecula Catering Application", $body);
+      $headers = 'Content-type: text/html; charset=utf-8' . "\r\n";
+      $context['email_result'] = mail("phasetwenty@gmail.com", 
+        "Temecula Catering Application", 
+        $body,
+        $headers);
     } else {
       $smarty->assign('errors', $form->errors());
     }
