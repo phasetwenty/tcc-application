@@ -4,7 +4,7 @@ class Form {
     'holidays', 'late_nights', 'memorize', 'lift', 'prior_employment', 'standing', 'workday');
   private static $dateFields = array('date_available');
   private static $numericFields = array('desired_salary');
-  private static $requiredFields = array('last_name', 'first_name', 'contact_address_to', 
+  private static $requiredFields = array('last_name', 'first_name',
     'contact_address_street_number', 'contact_address_city', 'contact_address_state', 
     'contact_address_zip', 'driver_license', 'email', 'phone_number');
 

@@ -35,21 +35,20 @@
     'email_access' => 'Do you have <strong>daily</strong> access to email?',
     'phone_reliable' => 'Do you have a <strong>reliable</strong> cell phone?',
     'screening' => 'Will you submit to drug screening prior to employment and random screenings?');
-  $smarty->assign('context', $context);
   $smarty->assign('errors', array());
 
   $form = new Form($_POST);
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $_ = $form->isValid();
-    $smarty->assign('errors', $form->errors());
-    
+    $isValid = $form->isValid();
     $postProcessor = new PostProcessor($form->cleanedData());
     $context = array_merge($postProcessor->process(), $context);
-
-    $body = $smarty->fetch('file:[email]body.tpl');
-    $context['email_result'] = mail("phasetwenty@gmail.com", "Temecula Catering Application", $body);
-    $smarty->assign('context', $context);
+    if ($isValid) {
+      $body = $smarty->fetch('file:[email]body.tpl');
+      $context['email_result'] = mail("phasetwenty@gmail.com", "Temecula Catering Application", $body);
+    } else {
+      $smarty->assign('errors', $form->errors());
+    }
   }
-  
-  $smarty->display('debug.tpl');
+  $smarty->assign('context', $context);
+  $smarty->display('main.tpl');
 ?>
