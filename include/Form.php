@@ -37,6 +37,11 @@
         $this->validateRequired(self::$booleanFields, 'Please make a selection.');
         $this->validateRequired(self::$requiredFields, 'This field is required.');
 
+        $result = PositionValidator::validate($this->cleanedData['position_desired']);
+        if ($result !== true) {
+          $this->errors['position_desired'] = $result;
+        }
+
         foreach (self::$dateFields as $f) {
           $result = DateValidator::validate($this->cleanedData[$f]);
           if ($result !== true) {

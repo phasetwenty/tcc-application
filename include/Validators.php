@@ -17,7 +17,9 @@
 
   class PositionValidator {
     const MESSAGE = 'Please make a selection.';
-
+    /*
+     * TODO: Put these in a central location so they can't get out of sync with the template values.
+     */
     private static $positionFields = array('busser', 'server', 'lead_server', 'cook', 'sous_chef', 
       'dishwasher');
 

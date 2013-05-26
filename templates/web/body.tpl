@@ -74,12 +74,19 @@
       </fieldset>
       <fieldset class="span6">
         <legend>Position Desired</legend>
-        <label class="checkbox"><input type="checkbox" name="position_desired[]" value="busser" {if in_array('busser', $context['position_desired'])}checked{/if}>Busser</label>
-        <label class="checkbox"><input type="checkbox" name="position_desired[]" value="server" {if in_array('server', $context['position_desired'])}checked{/if}>Server</label>
-        <label class="checkbox"><input type="checkbox" name="position_desired[]" value="lead_server" {if in_array('lead_server', $context['position_desired'])}checked{/if}>Lead Server</label>
-        <label class="checkbox"><input type="checkbox" name="position_desired[]" value="cook" {if in_array('cook', $context['position_desired'])}checked{/if}>Cook</label>
-        <label class="checkbox"><input type="checkbox" name="position_desired[]" value="sous_chef" {if in_array('sous_chef', $context['position_desired'])}checked{/if}>Sous Chef</label>
-        <label class="checkbox"><input type="checkbox" name="position_desired[]" value="dishwasher" {if in_array('dishwasher', $context['position_desired'])}checked{/if}>Dishwasher</label>
+        <div class="control-group {if array_key_exists('position_desired', $errors)}error{/if}">
+          {if array_key_exists('position_desired', $errors)}
+            <div>
+              <span class="help-inline">{$errors['position_desired']}</span>
+            </div>
+          {/if}
+          <label class="checkbox"><input type="checkbox" name="position_desired[]" value="busser" {if in_array('busser', $context['position_desired'])}checked{/if}>Busser</label>
+          <label class="checkbox"><input type="checkbox" name="position_desired[]" value="server" {if in_array('server', $context['position_desired'])}checked{/if}>Server</label>
+          <label class="checkbox"><input type="checkbox" name="position_desired[]" value="lead_server" {if in_array('lead_server', $context['position_desired'])}checked{/if}>Lead Server</label>
+          <label class="checkbox"><input type="checkbox" name="position_desired[]" value="cook" {if in_array('cook', $context['position_desired'])}checked{/if}>Cook</label>
+          <label class="checkbox"><input type="checkbox" name="position_desired[]" value="sous_chef" {if in_array('sous_chef', $context['position_desired'])}checked{/if}>Sous Chef</label>
+          <label class="checkbox"><input type="checkbox" name="position_desired[]" value="dishwasher" {if in_array('dishwasher', $context['position_desired'])}checked{/if}>Dishwasher</label>
+        </div>
       </fieldset>
     </div>
     <div class="row">
