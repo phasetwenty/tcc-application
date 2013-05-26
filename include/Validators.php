@@ -40,7 +40,12 @@
 
     public static function validate($value) {
       $int = intval($value);
-      return $int >= 1900 && $int <= getdate()['year'] ? true : YearValidator::MESSAGE;
+      $date = getdate();
+      /*
+       * Discovered that function array referencing was added in 5.4, and may not be supported
+       * on a general server.
+       */
+      return $int >= 1900 && $int <= $date['year'] ? true : YearValidator::MESSAGE;
     }
   }
 
