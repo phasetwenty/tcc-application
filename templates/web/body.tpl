@@ -190,10 +190,21 @@
         <p><em>I certify that my answers are true and complete to the best of my knowledge.</em></p>
         <p><em>If this application leads to employment, I understand that false or misleading information in my application or interview may result in my immediate release.</em></p>
         <div class="offset1 form-inline">
-          <label class="control-label" for="signature_date">Name</label>
-          <input id="signature_date" class="input-large" type="text" name="signature_name">
-          <label class="control-label" for="signature_date">Date</label>
-          <input id="signature_date" class="input-small" type="text" name="signature_date" value="{$smarty.now|date_format:'%m/%d/%Y'}">
+          <div class="control-group {if array_key_exists('signature_name', $errors) || array_key_exists('signature_date', $errors)}error{/if}">
+            {if array_key_exists('signature_name', $errors)}
+              <div>
+                <span class="help-inline">{$errors['signature_name']}</span>
+              </div>
+            {elseif array_key_exists('signature_date', $errors)}
+              <div>
+                <span class="help-inline">{$errors['signature_date']}</span>
+              </div>
+            {/if}
+            <label class="control-label" for="signature_name">Name</label>
+            <input id="signature_name" class="input-large" type="text" name="signature_name">
+            <label class="control-label" for="signature_date">Date</label>
+            <input id="signature_date" class="input-small" type="text" name="signature_date" value="{$smarty.now|date_format:'%m/%d/%Y'}">
+          </div>
         </div>
         <p><em>Please take a moment to double check your application prior to submitting.</em></p>
         <div class="offset4">

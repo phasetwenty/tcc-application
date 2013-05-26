@@ -2,16 +2,16 @@
   require_once('include/Validators.php');
 
   class Form {
-    private static $booleanFields = array('authorized', 'carry', 'cheerful', 'citizen', 'felony',
-      'holidays', 'late_nights', 'memorize', 'lift', 'prior_employment', 'standing', 'workday');
-    private static $dateFields = array('date_available');
+    private static $booleanFields = array('authorized', 'carry', 'cheerful', 'citizen',
+      'email_access', 'felony', 'friend', 'holidays', 'late_nights', 'license_valid', 'lift',
+      'memorize', 'lift', 'outside', 'phone_reliable', 'prior_employment', 'reliable', 'screening',
+      'standing', 'workday');
+    private static $dateFields = array('date_available', 'signature_date');
     private static $nameFields = array('last_name', 'first_name');
     private static $numericFields = array('desired_salary');
-    private static $requiredFields = array('carry', 'cheerful', 'contact_address_street_number',
+    private static $requiredFields = array('contact_address_street_number',
       'contact_address_city', 'contact_address_state', 'contact_address_zip', 'driver_license',
-      'email_access', 'friend', 'email', 'holidays', 'late_nights', 'license_valid', 'lift',
-      'memorize', 'outside', 'phone_number', 'phone_reliable', 'reliable', 'screening', 'standing',
-      'workday');
+      'email', 'phone_number', 'signature_name');
 
     private $cleaned;
     private $cleanedData;
