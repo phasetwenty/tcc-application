@@ -7,8 +7,8 @@
     <p>Thank you for your interest in employment with Temecula Catering. Please fill out the fields below for consideration.</p>
   </div>
   <form class="row" action="" method="POST" enctype="multipart/form-data">
-    <div class="row">
-      {if $smarty.server.REQUEST_METHOD == 'POST'}
+    {if $smarty.server.REQUEST_METHOD == 'POST'}
+      <div class="row">
         <div class="span7">
           {if array_key_exists('email_result', $context)}
             {if $context['email_result'] == true}
@@ -26,13 +26,20 @@
             </div>
           {/if}
         </div>
-      {/if}
-      <fieldset class="span12 offset3">
+      </div>
+    {/if}
+    <fieldset class="span12 offset3">
+      <div class="control-group {if array_key_exists('name', $errors)}error{/if}">
+        {if array_key_exists('name', $errors)}
+          <div>
+            <span class="help-inline">{$errors['name']}</span>
+          </div>
+        {/if}
         <input id="last_name" class="input-medium" placeholder="Last Name" type="text" name="last_name" value="{$context['last_name']}">
         <input id="first_name" class="input-medium" placeholder="First Name" type="text" name="first_name" value="{$context['first_name']}">
         <input id="middle_initial" class="input-mini" placeholder="MI" type="text" name="middle_initial" value="{$context['middle_initial']}">
-      </fieldset>
-    </div>
+      </div>
+    </fieldset>
     <div class="row">
       <fieldset class="span6">
         <legend>Contact Information</legend>

@@ -3,10 +3,10 @@ class Form {
   private static $booleanFields = array('authorized', 'carry', 'cheerful', 'citizen', 'felony',
     'holidays', 'late_nights', 'memorize', 'lift', 'prior_employment', 'standing', 'workday');
   private static $dateFields = array('date_available');
+  private static $nameFields = array('last_name', 'first_name');
   private static $numericFields = array('desired_salary');
-  private static $requiredFields = array('last_name', 'first_name',
-    'contact_address_street_number', 'contact_address_city', 'contact_address_state',
-    'contact_address_zip', 'driver_license', 'email', 'phone_number');
+  private static $requiredFields = array('contact_address_street_number', 'contact_address_city', 
+    'contact_address_state', 'contact_address_zip', 'driver_license', 'email', 'phone_number');
 
   private $cleaned;
   private $cleanedData;
@@ -31,6 +31,7 @@ class Form {
     $this->clean();
 
     if (empty($this->errors)) {
+      $this->validateName(self::$nameFields, 'Please include your full name.');
       $this->validateRequired(self::$booleanFields, 'Please make a selection.');
       $this->validateRequired(self::$requiredFields, 'This field is required.');
     }
@@ -68,9 +69,19 @@ class Form {
   }
 
   /*
-   * This was not done in the style of the other validators because to work the way I want,
-   * it operates directly on Form class members like $errors and $cleanedData.
+   * These validators are customized, unlike the others which are generic for their data types.
    */
+
+  private function validateName($fields, $message) {
+    foreach ($fields as $fieldName) {
+      if (!array_key_exists($fieldName, $this->cleanedData) ||
+          trim($this->cleanedData[$fieldName]) == false) {
+        $this->errors['name'] = $message;
+      }
+    }
+  }
+
+
   private function validateRequired($fields, $message) {
     /*
     $mapMessageToFields = array(
