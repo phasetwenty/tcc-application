@@ -3,9 +3,11 @@
   require_once('include/Form.php');
   require_once('include/PostProcessor.php');
 
-  define('APPLICATION_RECIPIENT', 'phasetwenty@gmail.com');
+  define('APPLICATION_RECIPIENT', 'erincragg@gmail.com');
   define('PROJECT_ROOT', __DIR__);
-  define('WORKING_DIR', '/var/www/tcc-application');
+  define('WORKING_DIR', __DIR__);
+
+  error_reporting(E_ERROR);
 
   $smarty = new Smarty();
   $smarty->setTemplateDir(array(PROJECT_ROOT . '/templates/',
