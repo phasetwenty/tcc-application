@@ -10,7 +10,7 @@
         'late_nights' => 'Are you able to work late nights?',
         'carry' => 'Can you carry a food or beverage tray with no problem?',
         'cheerful' => "Are you able to maintain cheerful, professional attitute even if you're having a bad day?"),
-      'other' => array(
+      'other_questions' => array(
         'friend' => 'Do you currently have a friend or relative working for Temecula Catering?',
         'email_access' => 'Do you have <strong>daily</strong> access to email?',
         'phone_reliable' => 'Do you have a <strong>reliable</strong> cell phone?',
@@ -24,6 +24,24 @@
         'outside' => 'Are you able to travel to different job sites outside of Temecula?',
         'license_valid' => "Do you have a valid California driver's license?",
         'reliable' => 'Do you have reliable transportation?'));
+      public static $SCHOOL_PREFIXES = array('hs_', 'college_', 'other_');
+
+      private static $SECTION_PREFIXES = array(
+        'prev_employment_prefixes' => 'previous_employment', 
+        'reference_prefixes' => 'reference');
+
+      public static function initialContext() {
+        $result = array_merge(self::$QUESTIONS, 
+          array('school_prefixes' => self::$SCHOOL_PREFIXES));
+        foreach (self::$SECTION_PREFIXES as $name => $prefix) {
+          $section = array();
+          for ($i = 1; $i <= 3; $i++) {
+            $section[] = sprintf("%s%d_", $prefix, $i);
+          }
+          $result[$name] = $section;
+        }
+        return $result;
+      }
   }
 
 ?>

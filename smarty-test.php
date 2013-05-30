@@ -17,7 +17,7 @@
   $smarty->setCacheDir(WORKING_DIR . 'cache/');
   $smarty->debugging = true;
 
-  $context = Display::$QUESTIONS;
+  $context = Display::initialContext();
   $smarty->assign('errors', array());
 
   $form = new Form($_POST);
@@ -38,5 +38,5 @@
     }
   }
   $smarty->assign('context', $context);
-  $smarty->display('main.tpl');
+  $smarty->display('debug.tpl');
 ?>

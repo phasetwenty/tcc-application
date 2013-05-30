@@ -17,10 +17,7 @@
   $smarty->setCompileDir(WORKING_DIR . '/compile/');
   $smarty->setCacheDir(WORKING_DIR . '/cache/');
 
-  /*
-   * TODO: These should live somewhere centralized, with other static template data.
-   */
-  $context = Display::$QUESTIONS;
+  $context = Display::initialContext();
   $smarty->assign('errors', array());
 
   $form = new Form($_POST);
@@ -41,5 +38,5 @@
     }
   }
   $smarty->assign('context', $context);
-  $smarty->display('main.tpl');
+  $smarty->display('debug.tpl');
 ?>
