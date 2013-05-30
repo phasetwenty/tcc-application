@@ -93,10 +93,9 @@
     <div class="row">
       <fieldset class="span12">
         <legend>Status</legend>
-        {include file='yesno.tpl' prompt_class='span6' radio_class='span6' prompt='Are you a citizen of the United States?' name='citizen' }
-        {include file='yesno.tpl' prompt_class='span6' radio_class='span6' prompt='If no, are you authorized to work in the United States?' name='authorized' }
-        {include file='yesno.tpl' prompt_class='span6' radio_class='span6' prompt='Have you ever worked for this company?' name='prior_employment' }
-        {include file='yesno.tpl' prompt_class='span6' radio_class='span6' prompt='Have you ever been convicted of a felony?' name='felony' }
+          {foreach $context['status'] as $var => $prompt}
+            {include file='yesno.tpl' prompt_class="span6" radio_class="span6" prompt=$prompt name=$var}
+          {/foreach}
         <textarea rows="4" name="felony_explain" placeholder="If yes, please explain">{$context['felony_explain']}</textarea>
       </fieldset>
     </div>
