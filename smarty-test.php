@@ -17,16 +17,13 @@
   $smarty->setCacheDir(WORKING_DIR . 'cache/');
   $smarty->debugging = true;
 
-  $context = Display::initialContext();
   $smarty->assign('errors', array());
 
-  $form = new Form($_POST);
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $isValid = $form->isValid();
+    $form = new Form($_POST);
     $postProcessor = new PostProcessor($form->cleanedData());
-    $context = array_merge($postProcessor->process(), $context);
-    if ($isValid) {
-      $smarty->assign('context', $context);
+    $context = $postProcessor->process();
+    if ($form->isValid()) {
       $body = $smarty->fetch('file:[email]body.tpl');
       $headers = 'Content-type: text/html; charset=utf-8' . "\r\n";
       $context['email_result'] = mail("phasetwenty@gmail.com", 
@@ -36,7 +33,8 @@
     } else {
       $smarty->assign('errors', $form->errors());
     }
+    $smarty->assign('context', $context);
   }
-  $smarty->assign('context', $context);
+  $smarty->assign('initial', Display::initial());
   $smarty->display('debug.tpl');
 ?>

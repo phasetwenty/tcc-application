@@ -80,20 +80,16 @@
               <span class="help-inline">{$errors['position_desired']}</span>
             </div>
           {/if}
-          <label class="checkbox"><input type="checkbox" name="position_desired[]" value="busser" {if in_array('busser', $context['position_desired'])}checked{/if}>Busser</label>
-          <label class="checkbox"><input type="checkbox" name="position_desired[]" value="server" {if in_array('server', $context['position_desired'])}checked{/if}>Server</label>
-          <label class="checkbox"><input type="checkbox" name="position_desired[]" value="lead_server" {if in_array('lead_server', $context['position_desired'])}checked{/if}>Lead Server</label>
-          <label class="checkbox"><input type="checkbox" name="position_desired[]" value="cook" {if in_array('cook', $context['position_desired'])}checked{/if}>Cook</label>
-          <label class="checkbox"><input type="checkbox" name="position_desired[]" value="sous_chef" {if in_array('sous_chef', $context['position_desired'])}checked{/if}>Sous Chef</label>
-          <label class="checkbox"><input type="checkbox" name="position_desired[]" value="dishwasher" {if in_array('dishwasher', $context['position_desired'])}checked{/if}>Dishwasher</label>
-          <label class="checkbox"><input type="checkbox" name="position_desired[]" value="events_equipment_manager" {if in_array('events_equipment_manager', $context['position_desired'])}checked{/if}>Events Equipment Manager</label>
+          {foreach $initial['positions_available'] as $value => $display}
+            <label class="checkbox"><input type="checkbox" name="position_desired[]" value="{$value}" {if in_array($value, $context['position_desired'])}checked{/if}>{$display}</label>
+          {/foreach}
         </div>
       </fieldset>
     </div>
     <div class="row">
       <fieldset class="span12">
         <legend>Status</legend>
-          {foreach $context['status'] as $var => $prompt}
+          {foreach $initial['status'] as $var => $prompt}
             {include file='yesno.tpl' prompt_class="span6" radio_class="span6" prompt=$prompt name=$var}
           {/foreach}
         <textarea rows="4" name="felony_explain" placeholder="If yes, please explain">{$context['felony_explain']}</textarea>
@@ -169,19 +165,19 @@
       <legend>Job Performance</legend>
       <fieldset class="span12">
         <legend>Ability</legend>
-        {foreach $context['ability'] as $var => $prompt}
+        {foreach $initial['ability'] as $var => $prompt}
           {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt=$prompt name=$var}
         {/foreach}
       </fieldset>
       <fieldset class="span12">
         <legend>Transportation</legend>
-        {foreach $context['transportation'] as $var => $prompt}
+        {foreach $initial['transportation'] as $var => $prompt}
           {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt=$prompt name=$var}
         {/foreach}
       </fieldset>
       <fieldset class="span12">
         <legend>Other</legend>
-        {foreach $context['other_questions'] as $var => $prompt}
+        {foreach $initial['other_questions'] as $var => $prompt}
           {include file='yesno.tpl' prompt_class="span8" radio_class="span2" prompt=$prompt name=$var}
         {/foreach}
       </fieldset>

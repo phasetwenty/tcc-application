@@ -157,19 +157,19 @@
         </tr>
       </thead>
       <tbody>
-        {foreach $context['ability'] as $var => $prompt}
+        {foreach $initial['ability'] as $var => $prompt}
           <tr>
             <td>{$prompt}</td>
             <td>{$context[$var]}</td>
           </tr>
         {/foreach}
-        {foreach $context['transportation'] as $var => $prompt}
+        {foreach $initial['transportation'] as $var => $prompt}
           <tr>
             <td>{$prompt}</td>
             <td>{$context[$var]}</td>
           </tr>
         {/foreach}
-        {foreach $context['other_questions'] as $var => $prompt}
+        {foreach $initial['other_questions'] as $var => $prompt}
           <tr>
             <td>{$prompt}</td>
             <td>{$context[$var]}</td>

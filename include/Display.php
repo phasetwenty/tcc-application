@@ -1,5 +1,14 @@
 <?php
   class Display {
+    public static $POSITIONS_AVAILABLE = array(
+      'busser' => 'Busser',
+      'server' => 'Server',
+      'lead_server' => 'Lead Server',
+      'cook' => 'Cook',
+      'sous_chef' => 'Sous Chef',
+      'dishwasher' => 'Dishwasher',
+      'events_equipment_manager'=> 'Events Equipment Manager');
+
     public static $QUESTIONS = array(
       'ability' => array(
         'memorize' => 'Are you able to memorize menus and last minute additions to menus?',
@@ -30,9 +39,11 @@
         'prev_employment_prefixes' => 'previous_employment', 
         'reference_prefixes' => 'reference');
 
-      public static function initialContext() {
+      public static function initial() {
         $result = array_merge(self::$QUESTIONS, 
           array('school_prefixes' => self::$SCHOOL_PREFIXES));
+        $result['positions_available'] = self::$POSITIONS_AVAILABLE;
+
         foreach (self::$SECTION_PREFIXES as $name => $prefix) {
           $section = array();
           for ($i = 1; $i <= 3; $i++) {
